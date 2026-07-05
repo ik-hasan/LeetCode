@@ -23,7 +23,6 @@ public:
             int x = front.second.first;
             int y = front.second.second;
             if(x==row-1 && y==col-1) return effort;
-            if(effort>diff[x][y]) continue;//pruning
             pq.pop();
 
             for(int i=0;i<4;i++){
