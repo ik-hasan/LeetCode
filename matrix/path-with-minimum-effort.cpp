@@ -30,7 +30,7 @@ public:
                 int ny = y+dy[i];
 
                 if(nx<row && nx>=0 && ny<col && ny>=0 ){
-                    int newDiff = abs(h[nx][ny]-h[x][y]);
+                    int newDiff = max(effort,abs(h[nx][ny]-h[x][y]));
                     int oldDiff = diff[nx][ny];
                     if(oldDiff>newDiff){
                         diff[nx][ny] = newDiff;
