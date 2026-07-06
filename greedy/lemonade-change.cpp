@@ -14,7 +14,7 @@ public:
         }
         else return false;
 
-        if((twenty<=ten && twenty<=five) || twenty<=3*five) ans = true;
+        if((twenty<=ten && twenty<=five) || 3*twenty<=five) ans = true;
         return ans;
     }
 };
