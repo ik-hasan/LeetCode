@@ -39,7 +39,7 @@ public:
                 // Better shortest distance found
                 if (newDist < dist[nbr]) {
                     dist[nbr] = newDist;
-                    ways[nbr] = ways[node];
+                    ways[nbr]++;
                     pq.push({newDist, nbr});
                 }
 
