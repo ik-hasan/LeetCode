@@ -12,6 +12,7 @@ public:
         return step;
     }
     int jump(vector<int>& nums) {
+        if(nums.size()==1) return 0;
         return solve(0,nums);
     }
 };
