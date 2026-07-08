@@ -60,14 +60,9 @@ public:
 
         if(obstacleGrid[0][0] == 1 || obstacleGrid[n-1][m-1] == 1) return 0;
 
-        vector<vector<int>> dp(n, vector<int>(m, 0));
+        vector<vector<long long>> dp(n, vector<long long>(m, 0));
         //base case thing
         dp[n-1][m-1] = 1;
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(obstacleGrid[i][j]==1) dp[i][j] = 0;
-            }
-        }
 
         for(int i = n-1; i >= 0; i--){
             for(int j = m-1; j >= 0; j--){
@@ -79,7 +74,7 @@ public:
 
                 if(i + 1 < n) down = dp[i+1][j];
 
-                dp[i][j] = right + down;
+                dp[i][j] = (long long)right + (long long)down;
             }
         }
 
