@@ -1,20 +1,17 @@
-
 class Solution {
 public:
-    int solve(vector<vector<int>>& triangle, int row, int col, vector<vector<int>> &dp) {
-        if (row == triangle.size() ) return 0;
-        if(dp[row][col]!=INT_MAX) return dp[row][col];
-        int inc1 = triangle[row][col] + solve(triangle, row + 1, col,dp);
-        int inc2 = triangle[row][col] + solve(triangle, row + 1, col + 1,dp);
-        dp[row][col] = min(inc1, inc2);
-        return dp[row][col];
-    }
 
+    int solve(int i,int j, vector<vector<int>>& t){
+        if(i==t.size()-1 && j<=t[i].size()-1) return t[i][j];
+        if(i>=t.size() || j>=t[i].size()) return INT_MAX;
+
+        int first = solve(i+1,j,t);
+        int second = solve(i+1,j+1,t);
+        if(first != INT_MAX) first += t[i][j]; 
+        if(second != INT_MAX) second += t[i][j]; 
+        return min(first,second);
+    }
     int minimumTotal(vector<vector<int>>& triangle) {
-        vector<vector<int>> dp(triangle.size(),vector<int> (triangle.size(),INT_MAX));
-        //triangle can also contaoni -1 thats why INT_MAX
-        return solve(triangle, 0, 0,dp);
+        return solve(0,0,triangle);
     }
 };
-
-
