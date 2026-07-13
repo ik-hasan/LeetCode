@@ -1,20 +1,22 @@
 class Solution {
 public:
-    bool checkValidString(string s) {
-        int open=0,star=0,close=0;
-        // for(int i=0;i<s.size();i++){
-        //     if(s[i]=='(') open++;
-        //     else if(s[i]==')') close++;
-        //     else star++;
-        // }
-        // cout<<open<<" "<<close<<" "<<star;
-        for(int i=0;i<s.size();i++){
-            if(s[i]=='(') open++;
-            else if(s[i]==')') open--;
-            else star++;
+    bool solve(int open, int i, string &s){
+        if(open < 0) return false;
+
+        if(i == s.size()) return open == 0;
+
+        bool a=false,b=false,c=false;
+        if(s[i]=='(') a = solve(open+1,i+1,s);
+        else if(s[i]==')') b = solve(open-1, i+1,s);
+        else{
+            c = solve(open+1,i+1,s) || //'('
+            solve(open-1,i+1,s) || //')'
+            solve(open,i+1,s); //empty string
         }
-        if(open==0) return true;
-        if(abs(open)<=star) return true;
-        return false;
+        return a || b || c;
+    }
+    bool checkValidString(string s) {
+        int open = 0;
+        return solve(open,0,s);
     }
 };
