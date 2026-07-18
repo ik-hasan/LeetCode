@@ -13,7 +13,10 @@ public:
     }
     
     void pop() {
-        index--;
+        if(index >= 0){
+            v.pop_back();
+            index--;
+        }
     }
     
     int top() {
