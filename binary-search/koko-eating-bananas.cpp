@@ -10,8 +10,9 @@ public:
             int mid = low+(high-low)/2;
             int hr = h;
             for(int i=0;i<piles.size();i++){
-                int x = (piles[i]+mid-1) / mid;//for ceiling val of temp/mid
+                int x = (piles[i]+mid-1) / mid;//for ceiling val
                 hr-=x;
+                if(hr<0) break;
             }
             if(hr>=0) {
                 ans = mid;
