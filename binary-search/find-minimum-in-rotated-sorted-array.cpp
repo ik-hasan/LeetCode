@@ -7,10 +7,13 @@ public:
             int mid = s+(e-s)/2;
             ans = min(ans,nums[mid]);
 
-            if(nums[s]<=nums[mid] && nums[mid]<=nums[e]){
-                e=mid-1;
-            }
-            else s=mid+1;
+            // if(nums[s]<=nums[mid] ){
+                if(nums[mid]<=nums[e]) e=mid-1;
+                else s=mid+1;
+            // }
+            // else if(nums[s]>nums[end]){
+            //     if(nums[mid]<=nums[e])
+            // }
         }
         return ans;
     }
