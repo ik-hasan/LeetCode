@@ -24,8 +24,8 @@ public:
             i++;
         }
 
-        while(i < n){.
-        
+        while(i < n){
+
 
             // Read middle 1-block
             int c11 = 0;
