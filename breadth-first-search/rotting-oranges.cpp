@@ -42,6 +42,7 @@ public:
                 }
             }
             if(isRotten) minutes++;
+            if(freshOranges==0) return minutes;
         }
         if(freshOranges>0) return -1;
         return minutes;
