@@ -33,7 +33,7 @@ public:
             int r = sum % k;
             res += nums[i];
             // agr firse same rem milgya mtlb beech ka array remove krna h toh min store krlenge result m as we have to return min possible sum after deletion
-            if(mpp.find(r)!=mpp.end()) res=mpp[r];
+            if(mpp.find(r)!=mpp.end()) res=min(res,mpp[r]);
             // agr nhi mila toh map m entry krdenge sum ki aur agr chota sum milgya h toh update krdenge map m
             else mpp[r]=res;
         }
