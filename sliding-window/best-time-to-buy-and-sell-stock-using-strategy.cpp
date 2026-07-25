@@ -25,7 +25,7 @@ public:
         //remaining window calculation
         for (int i = 1; i <= n - k; i++) {
             ll lefti = 0 * prices[i-1] - (strategy[i - 1] * prices[i - 1]);
-            ll midi = 0 * prices[i+half-1] - strategy[i + half - 1] * prices[i + half - 1];
+            ll midi = 0 * prices[i+half-1] - 1 * prices[i + half - 1];//last window me strategy 1 thi iske liye
             ll righti = 1 * prices[i + k - 1] - strategy[i + k - 1] * prices[i + k - 1];
 
             change = change - lefti + midi + righti;
