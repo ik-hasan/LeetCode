@@ -16,6 +16,6 @@ public:
         for(int i=n-2;i>=0;i--){
             if(prefixSum[i]%k==0) return prefixSum[i+1]-prefixSum[i];
         }
-        return 0;
+        return prefixSum[n-1];
     }
 };
