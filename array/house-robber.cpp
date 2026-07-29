@@ -1,26 +1,26 @@
 
-//BASIC WALA REC WITH TLE
-// class Solution {
-// public:
-//     int solve(vector<int>& nums,int index){
-//         if(index>=nums.size()) return 0;
+// //BASIC WALA REC WITH TLE
+// // class Solution {
+// // public:
+// //     int solve(vector<int>& nums,int index){
+// //         if(index>=nums.size()) return 0;
 
-//         int inc = nums[index]+solve(nums,index+2);
-//         int exc = solve(nums,index+1);
+// //         int inc = nums[index]+solve(nums,index+2);
+// //         int exc = solve(nums,index+1);
 
-//         return max(inc,exc);
-//     }
-//     int rob(vector<int>& nums) {
-//         return solve(nums,0);
-//     }
-// };
-
-
+// //         return max(inc,exc);
+// //     }
+// //     int rob(vector<int>& nums) {
+// //         return solve(nums,0);
+// //     }
+// // };
 
 
 
 
-//APPROACH 1 - TOP DOWN APPROACH OF DP
+
+
+// //APPROACH 1 - TOP DOWN APPROACH OF DP
 class Solution {
 public:
     int solveByDP(vector<int> nums, int i,vector<int>& dp_arr){
@@ -31,10 +31,10 @@ public:
 
         //apply include exclude technique of Recursion
         int include = nums[i]+solveByDP(nums,i+2,dp_arr);
-        int exclude = 0 + solveByDP(nums,i+1,dp_arr);
+        int exclude = solveByDP(nums,i+1,dp_arr);
         dp_arr[i]=max(include , exclude);//step (2) store value of rec call in dp array
 
-        return dp_arr[i];
+        return max(include , exclude);
     }
     int rob(vector<int>& nums) {
         int n=nums.size();
@@ -47,7 +47,7 @@ public:
 
 
 
-//APPROACH 2 - BOTTOM UP APPROACH OF DP
+// //APPROACH 2 - BOTTOM UP APPROACH OF DP
 // class Solution {
 // public:
 //     int rob(vector<int>& nums) {
@@ -69,22 +69,42 @@ public:
 
 
 
-// APPROACH 3- SPACE OPTIMIZATION
+// // APPROACH 3- SPACE OPTIMIZATION
+// // class Solution {
+// // public:
+// //     int rob(vector<int>& nums) {
+// //         int n=nums.size();
+// //         int next1=0;
+// //         int next2=0;
+
+// //         for(int i=n-1;i>=0;i--){//step (3)
+// //             int include = nums[i]+next2;
+// //             int exclude = 0 + next1;
+// //             int curr=max(include , exclude);
+
+// //             next2=next1;
+// //             next1=curr;
+// //         }
+// //         return next1;
+// //     }
+// // };
+
+
+
 // class Solution {
 // public:
-//     int rob(vector<int>& nums) {
-//         int n=nums.size();
-//         int next1=0;
-//         int next2=0;
-
-//         for(int i=n-1;i>=0;i--){//step (3)
-//             int include = nums[i]+next2;
-//             int exclude = 0 + next1;
-//             int curr=max(include , exclude);
-
-//             next2=next1;
-//             next1=curr;
+//     int ans = INT_MIN;
+//     void solve(int index,int currAns, vector<int>&nums){
+//         if(index>=nums.size()){
+//             ans = max(ans,currAns);
+//             return;
 //         }
-//         return next1;
+//         solve(index+2,currAns+nums[index],nums);
+//         solve(index+1,currAns,nums);
+//         return;
+//     }
+//     int rob(vector<int>& nums) {
+//         solve(0,0,nums);
+//         return ans;
 //     }
 // };
