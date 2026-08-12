@@ -7,8 +7,8 @@ public:
         while(r<nums.size()){
             freq[nums[r]]++;
             while(freq[nums[r]]>k && l<nums.size()){
-                l++;
                 freq[nums[l]]--;
+                l++;
             }
             ans = max(ans,r-l+1);
             r++;
