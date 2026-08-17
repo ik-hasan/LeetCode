@@ -68,14 +68,13 @@ public:
     int change(int amount, vector<int>& coins) {
 
         int n = coins.size();
+        const long long INF = INT_MAX;
 
-        vector<vector<int>> dp(
+        vector<vector<long long>> dp(
             n + 1,
-            vector<int>(amount + 1, 0)
+            vector<long long>(amount + 1, 0)
         );
 
-        // amount = 0 banane ka exactly 1 way:
-        // kuch bhi nahi lena
         for (int i = 0; i <= n; i++) {
             dp[i][0] = 1;
         }
@@ -84,15 +83,15 @@ public:
 
             for (int a = 1; a <= amount; a++) {
 
-                int take = 0;
+                long long take = 0;
 
                 if (a >= coins[i]) {
                     take = dp[i][a - coins[i]];
                 }
 
-                int notTake = dp[i + 1][a];
+                long long notTake = dp[i + 1][a];
 
-                dp[i][a] = take + notTake;
+                dp[i][a] = min(INF, take + notTake);
             }
         }
 
