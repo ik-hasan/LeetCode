@@ -17,8 +17,8 @@ public:
         if(root==NULL) return 0;
         int l = root->val + solve(root->left);
         int r = root->val + solve(root->right);
-        ans = max(ans,l+r-root->val);
         if(l<0 && r<0) return 0;
+        ans = max(ans,l+r-root->val);
         return max(l,r);
     }
     int maxPathSum(TreeNode* root) {
