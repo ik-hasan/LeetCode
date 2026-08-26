@@ -2,13 +2,13 @@ class Solution {
 public:
 
     int solve(int i,int j, string &s1, string &s2, vector<vector<int>> &dp){
-        if(i==s1.length()-1 && j>s2.length()-1) return s1.length()-i;
-        if(j==s2.length()-1 && i>s1.length()-1) return s2.length()-i;
+        if(i<=s1.length()-1 && j>s2.length()-1) return s1.length()-i;
+        if(j<=s2.length()-1 && i>s1.length()-1) return s2.length()-j;
         if(i>=s1.length() || j>=s2.length()) return 0;
         if(dp[i][j]!=-1) return dp[i][j];
 
         if(s1[i]==s2[j]) return dp[i][j] = solve(i+1,j+1,s1,s2,dp);
-        return dp[i][j] = 2 + min(solve(i+1,j,s1,s2,dp), solve(i,j+1,s1,s2,dp));
+        return dp[i][j] = min(1+solve(i+1,j,s1,s2,dp), 1+solve(i,j+1,s1,s2,dp));
     }
     int minDistance(string word1, string word2) {
         vector<vector<int>> dp(
