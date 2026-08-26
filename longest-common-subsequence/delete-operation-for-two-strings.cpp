@@ -2,6 +2,8 @@ class Solution {
 public:
 
     int solve(int i,int j, string &s1, string &s2, vector<vector<int>> &dp){
+        if(i==s1.length()-1 && j>s2.length()-1) return s1.length()-i;
+        if(j==s2.length()-1 && i>s1.length()-1) return s2.length()-i;
         if(i>=s1.length() || j>=s2.length()) return 0;
         if(dp[i][j]!=-1) return dp[i][j];
 
