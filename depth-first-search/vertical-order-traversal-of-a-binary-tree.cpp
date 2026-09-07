@@ -29,6 +29,8 @@ public:
         int prevCol = INT_MIN;
 
         for(auto [col,row,val] : nodes){
+
+            //write due to dumbgiri
             if(col == prevCol){
                 ans.back().push_back(val);
             }
