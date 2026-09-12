@@ -15,15 +15,15 @@ public:
     void solve(TreeNode* root,vector<string> & ans, string temp){
         if(root==NULL) return;
         if(root->left==NULL && root->right ==NULL){
-            temp += root->val + '0';
+            temp += to_string(root->val);
             ans.push_back(temp);
             // temp.pop_back();
             return;
         }
 
-        char ch = root->val + '0';
-        solve(root->left,ans,temp+ch+'-'+'>');
-        solve(root->right,ans,temp+ch+'-'+'>');
+        string ch = to_string(root->val);
+        solve(root->left, ans, temp + ch + "->");
+        solve(root->right, ans, temp + ch + "->");
         return;
     }
     vector<string> binaryTreePaths(TreeNode* root) {
