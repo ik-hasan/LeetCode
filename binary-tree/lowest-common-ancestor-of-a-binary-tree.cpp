@@ -17,8 +17,8 @@ public:
 
         auto a = solve(root->left,p,q);
         auto b = solve(root->right,p,q);
-        if(a!=NULL) return a;
-        if(b!=NULL) return b;
+        if(a!=NULL || b!=NULL) return root;
+        // if(b!=NULL) return b;
         return NULL;
     }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
