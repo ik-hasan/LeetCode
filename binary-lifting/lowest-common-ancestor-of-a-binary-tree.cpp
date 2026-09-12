@@ -24,12 +24,6 @@ public:
         else return b;
     }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if(root->val==p->val) return p;
-        if(root->val==q->val) return q;
-        auto a = solve(root->left,p,q);
-        auto b = solve(root->right,p,q);
-        if(a!=NULL && b!=NULL) return root;
-        else if(a!=NULL && b==NULL) return a;
-        return b;
+        return solve(root, p, q);
     }
 };
